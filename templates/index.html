@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgriSense – Kisan Mitra</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="icon" type="image/png"
+      href="{{ url_for('static', filename='favicon.png') }}">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+ <symbol id="i-logo" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#1e8a5a"/><path d="M24 37V22" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M24 25c0-6.500 4-9.500 10.500-9.500 0 6.500-4 9.500-10.500 9.500Z" fill="#fff"/><path d="M24 30c0-5-3-8-9-8 0 5 3 8 9 8Z" fill="#cdeedb"/><path d="M13 39a15 15 0 0 1 22 0" stroke="#a9e2c0" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
+ <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.5 6-7.5"/></symbol>
+ <symbol id="i-temp" viewBox="0 0 24 24"><path d="M14 4v10.5a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></symbol>
+ <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.7s6 6.2 6 10.6a6 6 0 0 1-12 0C6 8.9 12 2.7 12 2.7Z"/></symbol>
+ <symbol id="i-soil" viewBox="0 0 24 24"><path d="M3 8l9-5 9 5-9 5-9-5Z"/><path d="M3 13l9 5 9-5"/></symbol>
+ <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+ <symbol id="i-rain" viewBox="0 0 24 24"><path d="M20 16.5A4.5 4.5 0 0 0 18 8h-1.3A7 7 0 1 0 4 14.9"/><path d="M8 19v2M12 17v4M16 19v2"/></symbol>
+ <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></symbol>
+ <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></symbol>
+ <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></symbol>
+ <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+</svg>
+
+<aside class="sidebar">
+  <div class="brand"><svg class="hlogo" viewBox="0 0 48 48"><use href="#i-logo"/></svg><span>AgriSense</span></div>
+  <nav>
+    <a href="#overview" title="होम"><svg class="ico"><use href="#i-home"/></svg><b>होम</b></a>
+    <a href="#history" title="ग्राफ़"><svg class="ico"><use href="#i-chart"/></svg><b>ग्राफ़</b></a>
+    <a href="#controls" title="पंप कंट्रोल"><svg class="ico"><use href="#i-sliders"/></svg><b>कंट्रोल</b></a>
+    <a href="#voice" title="बोलकर पूछो"><svg class="ico"><use href="#i-mic"/></svg><b>आवाज़</b></a>
+  </nav>
+</aside>
+
+<aside class="rightbar">
+  <div class="aside-card scene">
+    <svg viewBox="0 0 300 190" aria-hidden="true">
+      <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfeedd"/><stop offset="1" stop-color="#fff3cf"/></linearGradient></defs>
+      <rect width="300" height="190" fill="url(#sky)"/>
+      <circle cx="238" cy="42" r="22" fill="#ffd45e"/><circle cx="238" cy="42" r="32" fill="#ffd45e" opacity=".25"/>
+      <path d="M0 120 Q80 90 160 115 T300 105 V190 H0Z" fill="#b9dfa5"/>
+      <rect x="150" y="82" width="26" height="62" rx="4" fill="#d9d4c4"/><path d="M150 84a13 13 0 0 1 26 0Z" fill="#b8b29f"/>
+      <rect x="52" y="98" width="86" height="50" fill="#c0583e"/><path d="M44 100 95 66l51 34Z" fill="#8f3b2a"/>
+      <rect x="82" y="118" width="26" height="30" fill="#f3e3c8"/><path d="M82 118l26 30M108 118 82 148" stroke="#c0583e" stroke-width="2"/>
+      <path d="M0 150 Q100 125 200 148 T300 140 V190 H0Z" fill="#6cb260"/>
+      <path d="M0 172 Q110 150 210 170 T300 163 V190 H0Z" fill="#3f9a57"/>
+      <g stroke="#2a7a45" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 10" fill="none"><path d="M10 168 Q110 150 200 166"/><path d="M30 182 Q130 164 240 180"/></g>
+    </svg>
+    <div class="cap"><h2>डेटा से खेती 🌱</h2><p>यहाँ जो भी नंबर दिखता है, वह सीधे आपके खेत के सेंसर से आता है। कोई अंदाज़ा या झूठी बात नहीं। एआई की सलाह अलग से, इसी असली डेटा को देखकर दी जाती है।</p></div>
+  </div>
+
+  <div class="aside-card">
+    <h3>अभी का हाल</h3>
+    <div class="arow"><span>कनेक्शन</span><b id="a-conn">–</b></div>
+    <div class="arow"><span>ऑटो सिंचाई</span><b id="a-auto">–</b></div>
+    <div class="arow"><span>पंप</span><b id="a-pump">–</b></div>
+    <div class="arow"><span>आख़िरी अपडेट</span><b id="a-time">–</b></div>
+  </div>
+
+  <div class="aside-card">
+    <h3>किसान की याद-दिहानी ✅</h3>
+    <ul class="check">
+      <li>मिट्टी सेंसर हमेशा 4095 दिखाए? वायर और मिट्टी में सेंसर की पकड़ जाँचें।</li>
+      <li>पंप चला या नहीं, यह खेत पर जाकर अपनी आँख से देखें।</li>
+      <li>पंप की सुरक्षा (ड्राई-रन और टाइमर) ESP32 में हमेशा चालू रखें।</li>
+      <li>मिट्टी सेंसर को पहले सूखी और गीली मिट्टी में जाँचें।</li>
+    </ul>
+  </div>
+</aside>
+
+<main>
+<header class="topbar">
+  <div class="hdr-brand"><svg class="hlogo" viewBox="0 0 48 48"><use href="#i-logo"/></svg><div><div class="wordmark">AgriSense</div><div class="sub">किसान मित्र · स्मार्ट खेती, आसान भाषा में</div></div></div>
+  <div class="top-right">
+    <span id="conn" class="pill pill-wait">जुड़ रहे हैं…</span>
+    <span class="muted small" id="updated">आख़िरी अपडेट: –</span>
+    <button id="refresh" class="btn ghost">🔄 नया डेटा</button>
+    <div class="avatar" title="किसान प्रोफ़ाइल">🧑‍🌾</div>
+  </div>
+</header>
+
+<div class="marquee"><div>🌾 फसल &nbsp;•&nbsp; 💧 पानी &nbsp;•&nbsp; ☀️ धूप &nbsp;•&nbsp; 🌱 मिट्टी &nbsp;•&nbsp; 🐄 पशु &nbsp;•&nbsp; 🚜 खेती &nbsp;•&nbsp; 🌾 फसल &nbsp;•&nbsp; 💧 पानी &nbsp;•&nbsp; ☀️ धूप &nbsp;•&nbsp; 🌱 मिट्टी &nbsp;•&nbsp; 🐄 पशु &nbsp;•&nbsp; 🚜 खेती &nbsp;•&nbsp; 🌾 फसल &nbsp;•&nbsp; 💧 पानी &nbsp;•&nbsp; ☀️ धूप &nbsp;•&nbsp;</div></div>
+
+<div id="banner" class="banner" hidden></div>
+
+<section id="overview">
+  <div class="farm-hero">
+    <span class="cloud c1">☁️</span><span class="cloud c2">☁️</span>
+    <div class="txt">
+      <span class="eyebrow" id="greet">नमस्ते, किसान भाई! 🙏</span>
+      <h1>आपका खेत, हमारी नज़र में 🌾</h1>
+      <p>मौसम, मिट्टी और पंप की पूरी जानकारी एक ही जगह। सीधे आपके खेत के सेंसर से।</p>
+      <div class="hero-btns"><button id="speak-all" class="btn big">🔊 पूरी जानकारी सुनाओ</button><a href="#voice" class="btn big alt">🎤 बोलकर पूछो</a></div>
+    </div>
+    <svg class="land" viewBox="0 0 600 240" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+      <circle cx="470" cy="62" r="34" fill="#ffd45e"/><circle cx="470" cy="62" r="48" fill="#ffd45e" opacity=".25"/>
+      <path d="M0 160 Q150 100 300 150 T600 130 V240 H0Z" fill="#b9dfa5"/>
+      <path d="M0 185 Q170 135 330 178 T600 160 V240 H0Z" fill="#7fbf6a"/>
+      <path d="M0 215 Q200 170 380 205 T600 190 V240 H0Z" fill="#3f9a57"/>
+      <g stroke="#2a7a45" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 11" fill="none"><path d="M20 232 Q220 190 400 222"/><path d="M60 238 Q260 200 440 232"/><path d="M0 224 Q200 182 380 214"/></g>
+      <g stroke="#c8963e" stroke-width="2.5" stroke-linecap="round" fill="#e3b85c"><path d="M545 232V176M565 232V168M585 232V180" fill="none"/><ellipse cx="545" cy="170" rx="5" ry="11"/><ellipse cx="565" cy="162" rx="5" ry="11"/><ellipse cx="585" cy="174" rx="5" ry="11"/></g>
+    </svg>
+  </div>
+
+  <div class="grid hero">
+    <div class="panel now">
+      <div class="muted small" id="now-date"></div>
+      <h2>अभी खेत में 🌿</h2>
+      <div class="pillrow"><span>🌡️ तापमान (गर्मी)</span><b id="p-temp">–</b></div>
+      <div class="pillrow"><span>💧 हवा की नमी</span><b id="p-hum">–</b></div>
+      <div class="pillrow"><span>☀️ रोशनी</span><b id="p-light">–</b></div>
+      <div class="pillrow"><span>🌧️ बारिश</span><b id="p-rain">–</b></div>
+    </div>
+
+    <div class="panel field">
+      <div class="fieldtxt"><h2>खेत का लाइव हाल 🌾</h2><p>आपके सेंसर का डेटा यहाँ अपने आप बदलता रहता है। हर कुछ सेकंड में नया हाल दिखता है।</p></div>
+      <div class="glass"><h3>मेरे खेत का हाल</h3>
+        <div class="logrow"><span>🌡️ तापमान</span><b id="g-temp">–</b></div>
+        <div class="logrow"><span>💧 हवा की नमी</span><b id="g-hum">–</b></div>
+        <div class="logrow"><span>🌱 मिट्टी सेंसर (नंबर)</span><b id="g-soil">–</b></div>
+        <div class="small" id="g-src">सीधे खेत से</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid cards">
+    <article class="card c-temp"><span class="emo">🌡️</span><h3>तापमान (गर्मी)</h3><div class="val" id="v-temp">–</div><div class="chip" id="s-temp">–</div></article>
+    <article class="card c-hum"><span class="emo">💧</span><h3>हवा की नमी</h3><div class="val" id="v-hum">–</div><div class="chip" id="s-hum">–</div></article>
+    <article class="card c-soil"><span class="emo">🌱</span><h3>मिट्टी सेंसर (नंबर)</h3><div class="val" id="v-soil">–</div><div class="chip" id="s-soil">–</div></article>
+    <article class="card c-light"><span class="emo">☀️</span><h3>रोशनी</h3><div class="val" id="v-light">–</div><div class="chip" id="s-light">–</div></article>
+    <article class="card c-rain"><span class="emo">🌧️</span><h3>बारिश</h3><div class="val" id="v-rain">–</div><div class="chip" id="s-rain">–</div></article>
+  </div>
+
+  <div class="grid two minis">
+    <article class="card mini"><div><h3>💦 ऑटो सिंचाई (पानी अपने आप)</h3><div class="val sm" id="m-auto">–</div><div class="small muted">बदलने के लिए नीचे “पंप कंट्रोल” में जाएँ</div></div><span class="tog" id="t-auto"></span></article>
+    <article class="card mini"><div><h3>⚙️ पंप (मोटर)</h3><div class="val sm" id="m-pump">–</div><div class="small muted">पक्की स्थिति तब दिखती है जब ESP32 से जानकारी आए</div></div><span class="tog" id="t-pump"></span></article>
+  </div>
+
+  <div class="grid two">
+    <div class="panel"><h2>खेत की स्थिति 📋</h2>
+      <dl class="kv">
+        <dt>🌧️ बारिश सेंसर</dt><dd id="f-rain">–</dd>
+        <dt>☀️ रोशनी सेंसर</dt><dd id="f-light">–</dd>
+        <dt>⚙️ पंप (पक्की स्थिति)</dt><dd id="f-pump">–</dd>
+        <dt>📨 पंप को दिया गया आदेश</dt><dd id="f-cmd">–</dd>
+        <dt>💦 ऑटो सिंचाई</dt><dd id="f-auto">–</dd>
+        <dt>📡 Blynk कनेक्शन</dt><dd id="f-conn">–</dd>
+      </dl>
+    </div>
+
+    <div class="panel"><h2>एआई की सलाह 🤖</h2>
+      <dl class="kv">
+        <dt>एआई का फ़ैसला</dt><dd id="a-dec">–</dd>
+        <dt id="a-score-l">एआई स्कोर</dt><dd id="a-score">–</dd>
+        <dt>पानी का अंदाज़ा</dt><dd id="a-amt">–</dd>
+        <dt>पंप कितनी देर चला</dt><dd id="a-run">–</dd>
+      </dl>
+      <p class="muted small">यह सब आपके ESP32 और एआई मॉडल का दिया हुआ डेटा है। जो डेटा नहीं आता, वहाँ “डेटा नहीं है” लिखा दिखता है।</p>
+    </div>
+  </div>
+
+  <!-- Updated AI adviser: existing design classes are retained -->
+  <div class="panel ai-panel" id="ai-advice">
+    <h2>एआई किसान सलाहकार 🤖</h2>
+    <p class="muted small">
+      अपने खेत के बारे में हिंदी या हरियाणवी में बोलकर सवाल पूछें।
+      एआई उपलब्ध सेंसर डेटा देखकर आसान भाषा में सलाह देगा।
+      सलाह मदद के लिए है; पंप की सुरक्षा और खेत की जाँच ज़रूरी है।
+    </p>
+
+    <div class="row">
+      <input
+        id="ai-q"
+        type="text"
+        maxlength="200"
+        placeholder="अपना सवाल लिखें या माइक दबाकर बोलें"
+        aria-label="किसान का सवाल"
+      >
+
+      <button
+        id="ai-mic"
+        class="btn ghost"
+        type="button"
+        aria-label="बोलकर सवाल पूछें"
+        aria-pressed="false"
+      >
+        <svg class="ico"><use href="#i-mic"/></svg>
+        <span id="ai-mic-label">🎤 बोलें</span>
+      </button>
+
+      <button id="ai-go" class="btn big" type="button">
+        🤖 एआई से सलाह लो
+      </button>
+    </div>
+
+    <p id="ai-voice-status" class="small muted" aria-live="polite">
+      माइक दबाएँ और अपना सवाल बोलें।
+    </p>
+
+    <div id="ai-out" class="aibox" aria-live="polite">
+      सलाह यहाँ दिखेगी।
+    </div>
+
+    <div class="row">
+      <button id="ai-say" class="btn ghost" type="button" hidden>
+        🔊 सलाह सुनो
+      </button>
+      <button id="ai-stop-speech" class="btn ghost" type="button" hidden>
+        🔇 आवाज़ बंद करो
+      </button>
+      <span id="ai-msg" class="small muted" aria-live="polite"></span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span>🌾 🌾 🌾</span></div>
+
+<section id="history">
+  <h2>पिछली रीडिंग (ग्राफ़) 📈</h2>
+  <p class="muted small" id="hist-note">यह ग्राफ़ तभी तक याद रहता है जब तक सर्वर चल रहा है।</p>
+  <div class="grid three">
+    <div class="panel chartbox"><h3>तापमान (°C)</h3><canvas id="c-temp"></canvas><p class="empty" id="e-temp">डेटा जमा हो रहा है…</p></div>
+    <div class="panel chartbox"><h3>हवा की नमी (%)</h3><canvas id="c-hum"></canvas><p class="empty" id="e-hum">डेटा जमा हो रहा है…</p></div>
+    <div class="panel chartbox"><h3>मिट्टी सेंसर (नंबर)</h3><canvas id="c-soil"></canvas><p class="empty" id="e-soil">डेटा जमा हो रहा है…</p></div>
+  </div>
+</section>
+
+<div class="divider"><span>🌾 🌾 🌾</span></div>
+
+<section id="controls" class="panel">
+  <h2>पंप कंट्रोल (सिंचाई) 💦</h2>
+  <p class="warn small">⚠ “आदेश भेज दिया” का मतलब सिर्फ़ इतना है कि Blynk को कमांड मिल गई। पंप सच में चला या नहीं, यह खेत पर जाकर खुद देखें। पंप की असली सुरक्षा (टाइमर, ड्राई-रन) ESP32 में चालू रखें।</p>
+  <div id="ctl-off" class="muted" hidden>कंट्रोल अभी बंद है। <code>.env</code> फ़ाइल में <code>CONTROL_PASSWORD</code> डालें और सर्वर दोबारा चलाएँ।</div>
+  <div id="ctl-login" hidden>
+    <input id="pw" type="password" placeholder="कंट्रोल पासवर्ड" autocomplete="current-password">
+    <button id="login" class="btn">🔓 कंट्रोल खोलो</button>
+  </div>
+  <div id="ctl-main" hidden>
+    <div class="row">
+      <button id="pump-on" class="btn big">▶ पंप चालू करो</button>
+      <button id="pump-off" class="btn big danger">⏹ पंप बंद करो</button>
+      <label class="switch-l"><input type="checkbox" id="auto"> ऑटो सिंचाई</label>
+      <button id="logout" class="btn ghost">🔒 लॉक</button>
+    </div>
+  </div>
+  <p id="ctl-msg" class="small" aria-live="polite"></p>
+</section>
+
+<div class="divider"><span>🌾 🌾 🌾</span></div>
+
+<section id="voice" class="panel assistant">
+  <h2>हिंदी सहायक 🎤 बोलकर पूछो</h2>
+  <div class="steps">
+    <div class="step"><b>1</b><span>🎤 माइक दबाओ</span></div>
+    <div class="step"><b>2</b><span>🗣️ हिंदी या हरियाणवी में पूछो</span></div>
+    <div class="step"><b>3</b><span>🔊 जवाब सुनो</span></div>
+  </div>
+  <div class="row">
+    <button id="mic" class="mic" aria-label="बोलना शुरू करो" type="button">
+      <svg class="ico big"><use href="#i-mic"/></svg>
+    </button>
+    <div class="grow">
+      <div class="label">आपने कहा</div>
+      <div id="heard" class="box" aria-live="polite">–</div>
+      <div class="label">जवाब</div>
+      <div id="answer" class="box" aria-live="polite">–</div>
+    </div>
+  </div>
+  <div class="row">
+    <button id="stop" class="btn ghost" type="button">🔇 आवाज़ बंद करो</button>
+    <span id="voice-msg" class="small muted" aria-live="polite"></span>
+  </div>
+  <h3>बोलना नहीं चाहते? बस दबाओ 👇</h3>
+  <div class="qrow">
+    <button class="qbtn" data-q="आज तापमान कितना है?" type="button">🌡️ आज तापमान कितना है?</button>
+    <button class="qbtn" data-q="मिट्टी में नमी कितनी है?" type="button">🌱 मिट्टी का हाल?</button>
+    <button class="qbtn" data-q="बारिश का सेंसर क्या बता रहा है?" type="button">🌧️ बारिश है क्या?</button>
+    <button class="qbtn" data-q="पंप चालू है या बंद?" type="button">⚙️ पंप चालू है?</button>
+    <button class="qbtn" data-q="AI सिंचाई के बारे में क्या बता रहा है?" type="button">🤖 एआई क्या बोलता है?</button>
+  </div>
+  <p class="muted small">माइक के लिए Chrome या Edge इस्तेमाल करें। वेबसाइट localhost या HTTPS पर खोलें। आवाज़ पहचानने की सुविधा ब्राउज़र और नेटवर्क पर निर्भर करती है।</p>
+</section>
+
+<div class="divider"><span>🌾 🌾 🌾</span></div>
+
+<section id="guide">
+  <h2>सेंसर को समझें 📖</h2>
+  <div class="grid guide">
+    <article class="gcard"><span class="gi">🌡️</span><h3>तापमान और नमी (DHT11)</h3><p>तापमान थोड़ा ऊपर-नीचे (लगभग ±2°C) हो सकता है। छोटे बदलाव को ज़्यादा न समझें।</p></article>
+    <article class="gcard"><span class="gi">🌱</span><h3>मिट्टी सेंसर</h3><p>नंबर 0 से 4095 तक होता है। इससे सीधे % नहीं मान सकते। पहले सेंसर को सूखी और गीली मिट्टी में जाँचें। हमेशा 4095 आए तो वायर या सेंसर देखें।</p></article>
+    <article class="gcard"><span class="gi">🌧️</span><h3>बारिश सेंसर</h3><p>सिर्फ़ बताता है कि बारिश है या नहीं। कितनी बारिश हुई, यह नहीं बताता।</p></article>
+    <article class="gcard"><span class="gi">☀️</span><h3>रोशनी सेंसर</h3><p>सिर्फ़ बताता है कि रोशनी है या अँधेरा। धूप कितनी तेज़ है, यह नहीं बताता।</p></article>
+  </div>
+</section>
+
+<footer class="farm-foot">
+  <svg class="hlogo sm" viewBox="0 0 48 48"><use href="#i-logo"/></svg>
+  <span><b>AgriSense · किसान मित्र</b> 🌾<br><small>यह सिर्फ़ खेत देखने और कंट्रोल करने का ज़रिया है। पंप की असली हार्डवेयर सुरक्षा की जगह यह नहीं ले सकता।</small></span>
+</footer>
+</main>
+
+<nav class="mobnav">
+  <a href="#overview" aria-label="होम"><svg class="ico"><use href="#i-home"/></svg></a>
+  <a href="#history" aria-label="ग्राफ़"><svg class="ico"><use href="#i-chart"/></svg></a>
+  <a href="#controls" aria-label="कंट्रोल"><svg class="ico"><use href="#i-sliders"/></svg></a>
+  <a href="#voice" aria-label="आवाज़"><svg class="ico"><use href="#i-mic"/></svg></a>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/voice-assistant.js') }}"></script>
+</body>
+</html>
